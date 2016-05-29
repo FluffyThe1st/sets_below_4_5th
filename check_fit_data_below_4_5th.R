@@ -15,7 +15,7 @@ check_fit_below_4_5th <- function(cond, model)
     n_B <- sum(test[301:(300 + NB), "Rhat"] < 1.1)
     if (n_T < (300 / 5 * 4) | n_B < (NB / 5 * 4)) {below <- c(below, j)}
   }
-  assign(paste0("sets_of_cond", cond, "_below_4_5th"), below, envir = .GlobalEnv)
+  assign(paste0("sets_of_cond", cond, "_below_4_5th"), below)
   remove(test, mdl_fit, n_T, NB, n_B, below, j, model)
   save.image(file = paste0("sets_of_cond", cond, "below_4_5th.Rdata"))
 }
