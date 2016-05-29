@@ -19,3 +19,5 @@ check_fit_below_4_5th <- function(cond, model)
   remove(test, mdl_fit, n_T, NB, n_B, below, j, model)
   save.image(file = paste0("sets_of_cond", cond, "below_4_5th.Rdata"))
 }
+
+remove(list = ls()[2])
