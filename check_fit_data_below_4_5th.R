@@ -12,7 +12,7 @@ check_fit_below_4_5th <- function(cond, model)
     load(paste0("./FIT_DATA/", model, "_cond", cond, "_set", j, ".Rdata"))
     test <- monitor(extract(mdl_fit, c("theta", "beta"), permuted = F, inc_warmup = F), probs = F)
     n_T <- sum(test[1:300, "Rhat"] < 1.1)
-    n_B <- sum(test[301:(300 + NB)] < 1,1)
+    n_B <- sum(test[301:(300 + NB), "Rhat"] < 1.1)
     if (n_T < (300 / 5 * 4) | n_B < (NB / 5 * 4)) {below <- c(below, j)}
   }
   assign(paste0("sets_of_cond", cond, "_below_4_5th"), below, envir = .GlobalEnv)
