@@ -8,6 +8,7 @@ check_fit_below_4_5th <- function(cond, model)
   below <- NULL
   for (j in 1:100)
   {
+    n_T <- NULL; n_B <- NULL
     load(paste0("./FIT_DATA/", model, "_cond", cond, "_set", j, ".Rdata"))
     test <- monitor(extract(mdl_fit, c("theta", "beta"), permuted = F, inc_warmup = F), probs = F)
     n_T <- sum(test[1:300, "Rhat"] < 1.1)
